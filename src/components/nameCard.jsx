@@ -11,7 +11,7 @@ const nameCard = () => {
         <div className="flex justify-center">
           <img
             src={profle}
-            className="w-[240px] h-[284px] object-cover rounded-2xl mt-4"
+            className="md:w-[240px] h-[284px] object-cover rounded-2xl mt-4"
           ></img>
         </div>
         <h1 className="text-black poppins-semibold text-4xl mt-2.5 ">Harsh Kumar</h1>

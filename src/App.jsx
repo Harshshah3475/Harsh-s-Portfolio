@@ -12,8 +12,8 @@ function App() {
     <div className='w-[98vw]'>
     
     <Navbar/>
-    <div className='md:flex md:justify-center w-[90vw]'>
-    <div className='md:w-[60%] md:flex'>
+    <div className='md:flex md:justify-center w-[90vw] h-auto'>
+    <div className='md:w-[60%] md:flex h-auto'>
     <NameCard/>
     <Hero/>
     </div>
