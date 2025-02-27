@@ -2,14 +2,23 @@ import { useState } from 'react'
 import './App.css'
 import NameCard from './components/nameCard'
 import Navbar from './components/navbar'
+import Hero from './components/hero'
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
     <>
+    <div className='w-[98vw]'>
+    
     <Navbar/>
+    <div className='md:flex md:justify-center w-[90vw]'>
+    <div className='md:w-[60%] md:flex'>
     <NameCard/>
+    <Hero/>
+    </div>
+    </div>
+    </div>
     </>
   )
 }
