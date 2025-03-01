@@ -1,0 +1,6 @@
+ReactJs
+nextjs
+tailwindcss
+NodeJs
+ExpressJS
+figma
