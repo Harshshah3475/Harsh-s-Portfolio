@@ -108,11 +108,8 @@ const hero = () => {
 
           {projects.map((e) => {
             return (
-              <a href={e.link} target="_blank">
-                <div
-                  key={e.image}
-                  className="w-full md:h-40 h-fit md:flex hover:bg-[#343434]  rounded-2xl my-8 pt-1 pl-1 "
-                >
+              <a key={e.image} href={e.link} target="_blank">
+                <div className="w-full md:h-40 h-fit md:flex hover:bg-[#343434]  rounded-2xl my-8 pt-1 pl-1 ">
                   <img
                     src={e.image}
                     className="md:w-[240px] h-38 object-cover rounded-2xl  "
@@ -156,33 +153,44 @@ const hero = () => {
           <h1 className="text-[#B6B4BD] opacity-40">TOGETHER</h1>
         </div>
 
-        <form onSubmit={handleSubmit}>
-          <div className="flex flex-wrap">
-            <div className="w-[50%]">
-              <label htmlFor="name">Name</label> <br></br>
-              <input
-                type="text"
-                id="name"
-                className=" h-9 rounded-xl  bg-[#343434] text-white w-[90%]"
-              />
-            </div>
-            <div className="w-[50%]">
-              <label htmlFor="email">Email</label> <br></br>
-              <input
-                type="email"
-                id="email"
-                className="h-9 rounded-xl  bg-[#343434] text-white w-[90%]"
-              />
-            </div>
-            <div className="w-full">
-              <label htmlFor="msg">Message</label> <br></br>
-              <textarea
-                id="msg"
-                className="h-32 w-full rounded-xl bg-[#343434] text-white px-4 py-2 resize-none"
-              ></textarea>
-            </div>
+        <div className="flex flex-wrap">
+          <div className="w-[50%]">
+            <label htmlFor="name">Name</label> <br></br>
+            <input
+              type="text"
+              id="name"
+              required
+              onChange={(e) => {
+                setform((prefForm) => ({ ...prefForm, name: e.target.value }));
+              }}
+              className=" h-9 rounded-xl  bg-[#343434] text-white w-[90%]"
+            />
           </div>
-        </form>
+          <div className="w-[50%]">
+            <label htmlFor="email">Email</label> <br></br>
+            <input
+              type="email"
+              id="email"
+              required
+              onChange={(e) => {
+                setform((prefForm) => ({ ...prefForm, email: e.target.value }));
+              }}
+              className="h-9 rounded-xl  bg-[#343434] text-white w-[90%]"
+            />
+          </div>
+          <div className="w-full">
+            <label htmlFor="msg">Message</label> <br></br>
+            <textarea
+              id="msg"
+              required
+              onChange={(e) => {
+                setform((prefForm) => ({ ...prefForm, message: e.target.value }));
+              }}
+              className="h-32 w-full rounded-xl bg-[#343434] text-white px-4 py-2 resize-none"
+            ></textarea>
+          </div>
+          <button onClick={handleSubmit}>click here</button>
+        </div>
       </div>
     </>
   );
