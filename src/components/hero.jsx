@@ -49,13 +49,17 @@ const hero = () => {
   const [form, setform] = useState([{ name: "", email: "", message: "" }]);
 
   const handleSubmit = () => {
-    console.log(
-      `name is ${form.name} \n email: ${form.email} \n msg: ${form.message}`
-    );
+    if (!form.name || !form.email || !form.message) {
+      console.log("Please fill all the details");
+    } else {
+      console.log(
+        `name is ${form.name} \n email: ${form.email} \n msg: ${form.message}`
+      );
+    }
   };
   return (
     <>
-      <div className="md:mt-8 md:text-left text-center ml-9 mt-8 h-fit">
+      <div className="md:mt-8 md:text-left text-center md:ml-9 mt-8 h-fit">
         <div className="poppins-bold md:text-8xl text-5xl">
           <h1 className="text-white">WEB</h1>
           <h1 className="text-[#B6B4BD] opacity-40">DEVELOPER</h1>
@@ -109,25 +113,28 @@ const hero = () => {
           {projects.map((e) => {
             return (
               <a key={e.image} href={e.link} target="_blank">
-                <div className="w-full md:h-40 h-fit md:flex hover:bg-[#343434]  rounded-2xl my-8 pt-1 pl-1 ">
-                  <img
-                    src={e.image}
-                    className="md:w-[240px] h-38 object-cover rounded-2xl  "
-                  />
-                  <div className="md:ml-3 pt-2 md:pt-6">
-                    <h1 className="text-white poppins-medium text-2xl  ">
-                      {e.title}
-                    </h1>
-                    <p className="text-[#B6B4BD] poppins-light text-sm mt-1 md:mt-2">
-                      {e.desc}
-                    </p>
-                    #36454F
+                <div className="w-full md:h-40 h-fit hover:bg-[#343434] flex flex-col md:flex-row items-center rounded-2xl my-8 pt-1">
+                  <div className="w-[80%] flex flex-col items-center md:flex-row md:items-start">
+                    <img
+                      src={e.image}
+                      className="md:w-[240px] w-[200px] h-38 object-cover rounded-2xl"
+                    />
+                    <div className="md:ml-3 pt-2 md:pt-6 text-center md:text-left">
+                      <h1 className="text-white poppins-medium text-2xl">
+                        {e.title}
+                      </h1>
+                      <p className="text-[#B6B4BD] poppins-light text-sm mt-1 md:mt-2">
+                        {e.desc}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </a>
             );
           })}
         </div>
+
+        {/* tools section */}
         <div>
           <div className="poppins-bold md:text-8xl text-5xl mt-8">
             <h1 className="text-white">PREMIUM</h1>
@@ -136,11 +143,16 @@ const hero = () => {
           <div className="flex w-full flex-wrap mt-8">
             {tools.map((e) => {
               return (
-                <div key={e.img} className="md:w-[45%] flex m-2 text-left ">
-                  <img src={e.img} className="w-16 rounded-2xl" />
-                  <div className=" ml-5 text-sm mt-2 text-white">
-                    {e.toolName}
-                    <p className="text-[#B6B4BD]">{e.desc}</p>
+                <div
+                  key={e.img}
+                  className="md:w-[45%] w-full flex justify-center my-2 text-left "
+                >
+                  <div className="flex w-[80%]">
+                    <img src={e.img} className="w-16 rounded-2xl" />
+                    <div className=" ml-5 text-sm mt-2 text-white">
+                      {e.toolName}
+                      <p className="text-[#B6B4BD]">{e.desc}</p>
+                    </div>
                   </div>
                 </div>
               );
@@ -153,9 +165,9 @@ const hero = () => {
           <h1 className="text-[#B6B4BD] opacity-40">TOGETHER</h1>
         </div>
 
-        <div className="flex flex-wrap">
-          <div className="w-[50%]">
-            <label htmlFor="name">Name</label> <br></br>
+        <div className="flex flex-wrap mt-8 gap-4 px-4 md:px-0">
+          <div className="w-full md:w-[45%]">
+            <label htmlFor="name" className="text-white poppins-medium mb-2 block text-sm md:text-base">Name</label>
             <input
               type="text"
               id="name"
@@ -163,11 +175,11 @@ const hero = () => {
               onChange={(e) => {
                 setform((prefForm) => ({ ...prefForm, name: e.target.value }));
               }}
-              className=" h-9 rounded-xl  bg-[#343434] text-white w-[90%]"
+              className="h-10 md:h-12 rounded-xl bg-[#343434] text-white w-full px-3 md:px-4 focus:outline-none focus:shadow-inner shadow-sm transition-all text-sm md:text-base border border-[#4a4a4a] focus:border-[#5a5a5a]"
             />
           </div>
-          <div className="w-[50%]">
-            <label htmlFor="email">Email</label> <br></br>
+          <div className="w-full md:w-[45%]">
+            <label htmlFor="email" className="text-white poppins-medium mb-2 block text-sm md:text-base">Email</label>
             <input
               type="email"
               id="email"
@@ -175,21 +187,31 @@ const hero = () => {
               onChange={(e) => {
                 setform((prefForm) => ({ ...prefForm, email: e.target.value }));
               }}
-              className="h-9 rounded-xl  bg-[#343434] text-white w-[90%]"
+              className="h-10 md:h-12 rounded-xl bg-[#343434] text-white w-full px-3 md:px-4 focus:outline-none focus:shadow-inner shadow-sm transition-all text-sm md:text-base border border-[#4a4a4a] focus:border-[#5a5a5a]"
             />
           </div>
           <div className="w-full">
-            <label htmlFor="msg">Message</label> <br></br>
+            <label htmlFor="msg" className="text-white poppins-medium mb-2 block text-sm md:text-base">Message</label>
             <textarea
               id="msg"
               required
               onChange={(e) => {
-                setform((prefForm) => ({ ...prefForm, message: e.target.value }));
+                setform((prefForm) => ({
+                  ...prefForm,
+                  message: e.target.value,
+                }));
               }}
-              className="h-32 w-full rounded-xl bg-[#343434] text-white px-4 py-2 resize-none"
+              className="h-28 md:h-32 w-full rounded-xl bg-[#343434] text-white px-3 md:px-4 py-2 md:py-3 resize-none focus:outline-none focus:shadow-inner shadow-sm transition-all text-sm md:text-base border border-[#4a4a4a] focus:border-[#5a5a5a]"
             ></textarea>
           </div>
-          <button onClick={handleSubmit}>click here</button>
+          <div className="w-full flex justify-center md:justify-start">
+            <button 
+              onClick={handleSubmit}
+              className="backdrop-blur-sm bg-white/10 hover:bg-white/20 text-white poppins-medium py-1.5 md:py-2 px-5 md:px-6 rounded-xl transition-all border border-white/20 text-sm"
+            >
+              Send Message
+            </button>
+          </div>
         </div>
       </div>
     </>
