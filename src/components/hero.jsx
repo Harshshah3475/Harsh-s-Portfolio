@@ -1,7 +1,11 @@
 import React from "react";
 import { useState } from "react";
+import { InView } from "react-intersection-observer";
 
-const hero = () => {
+
+  const Hero = () => {
+  
+
   const [projects, setprojects] = useState([
     {
       image: "/src/assets/project1.png",
@@ -46,7 +50,7 @@ const hero = () => {
     { img: "/src/assets/figma.avif", toolName: "Figma", desc: "Design tool" },
   ]);
 
-  const [form, setform] = useState([{ name: "", email: "", message: "" }]);
+  const [form, setform] = useState({ name: "", email: "", message: "" });
 
   const handleSubmit = () => {
     if (!form.name || !form.email || !form.message) {
@@ -57,14 +61,16 @@ const hero = () => {
       );
     }
   };
+
   return (
-    <>
-      <div className="md:mt-8 md:text-left text-center md:ml-9 mt-8 h-fit">
-        <div className="poppins-bold md:text-8xl text-5xl">
+    <div className="md:mt-8 md:text-left text-center md:ml-9 mt-8 h-fit">
+        <div id="home" className="poppins-bold md:text-8xl text-5xl">
           <h1 className="text-white">WEB</h1>
           <h1 className="text-[#B6B4BD] opacity-40">DEVELOPER</h1>
         </div>
         <div className="md:w-[80%] mt-3">
+     
+
           <p className="text-[#B6B4BD] ">
             Passionate about creating intuitive and engaging user experiences.
             Specialize in transforming ideas into beautifully crafted products.
@@ -72,29 +78,32 @@ const hero = () => {
         </div>
 
         {/* numbers */}
+        <InView>
+          {({inView, ref, entry}) => (
+            <div ref={ref} className="flex text-white md:w-[80%] justify-between my-3">
+              <div className={`${inView ? "md:w-8 transition-all duration-200 ease-in" : "md:w-8 opacity-0 "}`}>
+                <h1 className="poppins-bold md:text-5xl text-3xl">+1</h1>
+                <span className="md:text-sm w-3 text-balance text-[12px] p-1">
+                  YEARS OF EXPERIENCE
+                </span>
+              </div>
 
-        <div className="flex text-white md:w-[80%] justify-between my-3">
-          <div className="md:w-16">
-            <h1 className="poppins-bold md:text-5xl text-3xl">+1</h1>
-            <span className="md:text-sm w-3 text-balance text-[12px]">
-              YEARS OF EXPERIENCE
-            </span>
-          </div>
-
-          <div className="md:w-16">
+          <div className={`${inView ? "md:w-8 transition-all duration-300 ease-in" : "md:w-8 opacity-0 "}`}>
             <h1 className="poppins-bold md:text-5xl text-3xl">+3</h1>
-            <span className="md:text-sm w-3 text-balance text-[12px]">
+            <span className="md:text-sm w-3 text-balance text-[12px] p-1">
               PROJECTS COMPLETED
             </span>
           </div>
 
-          <div className="md:w-16">
-            <h1 className="poppins-bold md:text-5xl text-3xl">+0</h1>
-            <span className="md:text-sm w-3 text-balance text-[12px]">
-              WORLDWIDE CLIENTS
-            </span>
-          </div>
-        </div>
+              <div className={`${inView ? "md:w-8 transition-all duration-400 ease-in" : "md:w-8 opacity-0 "}`}>
+                <h1 className="poppins-bold md:text-5xl text-3xl">+0</h1>
+                <span className="md:text-sm w-3 text-balance text-[12px] p-1">
+                  WORLDWIDE CLIENTS
+                </span>
+              </div>
+            </div>
+          )}
+        </InView>
         {/* numbers end */}
 
         <div className="w-full md:h-28 md:flex mt-8">
@@ -105,7 +114,7 @@ const hero = () => {
 
         {/* Recent prpojects */}
         <div>
-          <div className="poppins-bold md:text-8xl text-5xl mt-8">
+          <div id="projects" className="poppins-bold md:text-8xl text-5xl mt-8">
             <h1 className="text-white">RECENT</h1>
             <h1 className="text-[#B6B4BD] opacity-40">PROJECTS</h1>
           </div>
@@ -136,86 +145,89 @@ const hero = () => {
 
         {/* tools section */}
         <div>
-          <div className="poppins-bold md:text-8xl text-5xl mt-8">
+          <div id="tools" className="poppins-bold md:text-8xl text-5xl mt-8">
             <h1 className="text-white">PREMIUM</h1>
             <h1 className="text-[#B6B4BD] opacity-40">TOOLS</h1>
           </div>
-          <div className="flex w-full flex-wrap mt-8">
-            {tools.map((e) => {
-              return (
-                <div
-                  key={e.img}
-                  className="md:w-[45%] w-full flex justify-center my-2 text-left "
-                >
-                  <div className="flex w-[80%]">
-                    <img src={e.img} className="w-16 rounded-2xl" />
-                    <div className=" ml-5 text-sm mt-2 text-white">
-                      {e.toolName}
-                      <p className="text-[#B6B4BD]">{e.desc}</p>
+          <InView>
+            {({inView, ref, entry}) => (
+              <div ref={ref} className="flex w-full flex-wrap mt-8">
+                {tools.map((e) => {
+                  return (
+                    <div
+                      key={e.img}
+                      className={(!inView)?"md:w-[45%] w-full flex justify-center my-2 text-left opacity-0": "md:w-[45%] w-full flex justify-center my-2 text-left transition-all duration-200 ease-in opacity-100"}
+                    >
+                      <div className="flex w-[80%]">
+                        <img src={e.img} className="w-16 rounded-2xl" />
+                        <div className=" ml-5 text-sm mt-2 text-white">
+                          {e.toolName}
+                          <p className="text-[#B6B4BD]">{e.desc}</p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              );
-            })}
+                  );
+                })}
+              </div>
+            )}
+          </InView>
+          {/* contact form */}
+          <div id="contact" className="poppins-bold md:text-7xl text-5xl mt-8">
+            <h1 className="text-white">LET'S WORK</h1>
+            <h1 className="text-[#B6B4BD] opacity-40">TOGETHER</h1>
           </div>
-        </div>
-        {/* contact form */}
-        <div className="poppins-bold md:text-7xl text-5xl mt-8">
-          <h1 className="text-white">LET'S WORK</h1>
-          <h1 className="text-[#B6B4BD] opacity-40">TOGETHER</h1>
-        </div>
 
-        <div className="flex flex-wrap mt-8 gap-4 px-4 md:px-0">
-          <div className="w-full md:w-[45%]">
-            <label htmlFor="name" className="text-white poppins-medium mb-2 block text-sm md:text-base">Name</label>
-            <input
-              type="text"
-              id="name"
-              required
-              onChange={(e) => {
-                setform((prefForm) => ({ ...prefForm, name: e.target.value }));
-              }}
-              className="h-10 md:h-12 rounded-xl bg-[#343434] text-white w-full px-3 md:px-4 focus:outline-none focus:shadow-inner shadow-sm transition-all text-sm md:text-base border border-[#4a4a4a] focus:border-[#5a5a5a]"
-            />
-          </div>
-          <div className="w-full md:w-[45%]">
-            <label htmlFor="email" className="text-white poppins-medium mb-2 block text-sm md:text-base">Email</label>
-            <input
-              type="email"
-              id="email"
-              required
-              onChange={(e) => {
-                setform((prefForm) => ({ ...prefForm, email: e.target.value }));
-              }}
-              className="h-10 md:h-12 rounded-xl bg-[#343434] text-white w-full px-3 md:px-4 focus:outline-none focus:shadow-inner shadow-sm transition-all text-sm md:text-base border border-[#4a4a4a] focus:border-[#5a5a5a]"
-            />
-          </div>
-          <div className="w-full">
-            <label htmlFor="msg" className="text-white poppins-medium mb-2 block text-sm md:text-base">Message</label>
-            <textarea
-              id="msg"
-              required
-              onChange={(e) => {
-                setform((prefForm) => ({
-                  ...prefForm,
-                  message: e.target.value,
-                }));
-              }}
-              className="h-28 md:h-32 w-full rounded-xl bg-[#343434] text-white px-3 md:px-4 py-2 md:py-3 resize-none focus:outline-none focus:shadow-inner shadow-sm transition-all text-sm md:text-base border border-[#4a4a4a] focus:border-[#5a5a5a]"
-            ></textarea>
-          </div>
-          <div className="w-full flex justify-center md:justify-start">
-            <button 
-              onClick={handleSubmit}
-              className="backdrop-blur-sm bg-white/10 hover:bg-white/20 text-white poppins-medium py-1.5 md:py-2 px-5 md:px-6 rounded-xl transition-all border border-white/20 text-sm"
-            >
-              Send Message
-            </button>
+          <div className="flex flex-wrap mt-8 gap-4 px-4 md:px-0">
+            <div className="w-full md:w-[45%]">
+              <label htmlFor="name" className="text-white poppins-medium mb-2 block text-sm md:text-base">Name</label>
+              <input
+                type="text"
+                id="name"
+                required
+                onChange={(e) => {
+                  setform((prefForm) => ({ ...prefForm, name: e.target.value }));
+                }}
+                className="h-10 md:h-12 rounded-xl bg-[#343434] text-white w-full px-3 md:px-4 focus:outline-none focus:shadow-inner shadow-sm transition-all text-sm md:text-base border border-[#4a4a4a] focus:border-[#5a5a5a]"
+              />
+            </div>
+            <div className="w-full md:w-[45%]">
+              <label htmlFor="email" className="text-white poppins-medium mb-2 block text-sm md:text-base">Email</label>
+              <input
+                type="email"
+                id="email"
+                required
+                onChange={(e) => {
+                  setform((prefForm) => ({ ...prefForm, email: e.target.value }));
+                }}
+                className="h-10 md:h-12 rounded-xl bg-[#343434] text-white w-full px-3 md:px-4 focus:outline-none focus:shadow-inner shadow-sm transition-all text-sm md:text-base border border-[#4a4a4a] focus:border-[#5a5a5a]"
+              />
+            </div>
+            <div className="w-full">
+              <label htmlFor="msg" className="text-white poppins-medium mb-2 block text-sm md:text-base">Message</label>
+              <textarea
+                id="msg"
+                required
+                onChange={(e) => {
+                  setform((prefForm) => ({
+                    ...prefForm,
+                    message: e.target.value,
+                  }));
+                }}
+                className="h-28 md:h-32 w-full rounded-sm resize-y bg-[#343434] text-white px-3 md:px-4 py-2 md:py-3  focus:outline-none focus:shadow-inner shadow-sm transition-all text-sm md:text-base border border-[#4a4a4a] focus:border-[#5a5a5a]"
+              ></textarea>
+            </div>
+            <div className="w-full flex justify-center md:justify-start">
+              <button 
+                onClick={handleSubmit}
+                className="backdrop-blur-sm bg-white/10 hover:bg-white/20 text-white poppins-medium py-1.5 md:py-2 px-5 md:px-6 rounded-xl transition-all border border-white/20 text-sm"
+              >
+                Send Message
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </>
+    </div>
   );
 };
 
-export default hero;
+export default Hero;
