@@ -9,7 +9,7 @@ export default defineConfig({
   ],
   server: {
     allowedHosts: [
-      ''
+      'go-came-saudi-string.trycloudflare.com'
     ]
   }
 })
