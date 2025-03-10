@@ -14,13 +14,13 @@ const Hero = () => {
 
   const [projects, setprojects] = useState([
     {
-      image: "/src/assets/project1.png",
+      image: "./src/assets/project1.png",
       title: "Notes4all",
       desc: "A platform for getting your college notes at one place.",
       link: "https://notes4all-mu.vercel.app",
     },
     {
-      image: "/src/assets/project2.png",
+      image: "./src/assets/project2.png",
       title: "SCP Website",
       desc: "Website for college most prestigeious society Sanskritik Chetna Parishad.",
       link: "https://scpps.co.in",
@@ -29,31 +29,31 @@ const Hero = () => {
 
   const [tools, settools] = useState([
     {
-      img: "/src/assets/reactjs.png",
+      img: "./src/assets/reactjs.png",
       toolName: "ReactJS",
       desc: "Front-end JS library",
     },
     {
-      img: "/src/assets/nodejs.png",
+      img: "./src/assets/nodejs.png",
       toolName: "NodeJS",
       desc: "Cross platform JS runtime",
     },
     {
-      img: "/src/assets/expressjs.png",
+      img: "./src/assets/expressjs.png",
       toolName: "EXpressJS",
       desc: "NodeJS framework",
     },
     {
-      img: "/src/assets/nextjs.avif",
+      img: "./src/assets/nextjs.avif",
       toolName: "NextJS",
       desc: "React Framework",
     },
     {
-      img: "/src/assets/tailwindcss.png",
+      img: "./src/assets/tailwindcss.png",
       toolName: "TailwindCSS",
       desc: "CSS framework",
     },
-    { img: "/src/assets/figma.avif", toolName: "Figma", desc: "Design tool" },
+    { img: "./src/assets/figma.avif", toolName: "Figma", desc: "Design tool" },
   ]);
 
   const [form, setform] = useState({ name: "", email: "", message: "" });
