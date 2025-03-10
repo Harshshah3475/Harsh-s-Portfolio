@@ -3,7 +3,14 @@ import { useState, useEffect } from "react";
 import { InView } from "react-intersection-observer";
 import layersSVG from "../assets/layers.svg";
 import layoutSVG from "../assets/layout.svg";
-
+import project1 from "../assets/project1.png"
+import project2 from "../assets/project2.png"
+import reactjs from "../assets/reactjs.png"
+import nodejs from "../assets/nodejs.png"
+import expressjs from "../assets/expressjs.png"
+import nextjs from "../assets/nextjs.avif"
+import tailwind from "../assets/tailwindcss.png"
+import figma from "../assets/figma.avif"
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -14,13 +21,13 @@ const Hero = () => {
 
   const [projects, setprojects] = useState([
     {
-      image: "./src/assets/project1.png",
+      image: `${project1}`,
       title: "Notes4all",
       desc: "A platform for getting your college notes at one place.",
       link: "https://notes4all-mu.vercel.app",
     },
     {
-      image: "./src/assets/project2.png",
+      image: `${project2}`,
       title: "SCP Website",
       desc: "Website for college most prestigeious society Sanskritik Chetna Parishad.",
       link: "https://scpps.co.in",
@@ -29,31 +36,31 @@ const Hero = () => {
 
   const [tools, settools] = useState([
     {
-      img: "./src/assets/reactjs.png",
+      img: `${reactjs}`,
       toolName: "ReactJS",
       desc: "Front-end JS library",
     },
     {
-      img: "./src/assets/nodejs.png",
+      img: `${nodejs}`,
       toolName: "NodeJS",
       desc: "Cross platform JS runtime",
     },
     {
-      img: "./src/assets/expressjs.png",
+      img: `${expressjs}`,
       toolName: "EXpressJS",
       desc: "NodeJS framework",
     },
     {
-      img: "./src/assets/nextjs.avif",
+      img: `${nextjs}`,
       toolName: "NextJS",
       desc: "React Framework",
     },
     {
-      img: "./src/assets/tailwindcss.png",
+      img: `${tailwind}`,
       toolName: "TailwindCSS",
       desc: "CSS framework",
     },
-    { img: "./src/assets/figma.avif", toolName: "Figma", desc: "Design tool" },
+    { img:`${figma}`, toolName: "Figma", desc: "Design tool" },
   ]);
 
   const [form, setform] = useState({ name: "", email: "", message: "" });
@@ -158,8 +165,8 @@ const Hero = () => {
             return (
               <a key={e.image} href={e.link} target="_blank">
                 <div 
-                  className={`w-full md:h-40 h-fit hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-all duration-700 flex flex-col md:flex-row items-center rounded-xl my-8 relative group ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
-                  style={{ transitionDelay: `${900 + index * 200}ms` }}
+                  className={`w-full md:h-40 h-fit hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-all duration-200 flex flex-col md:flex-row items-center rounded-xl my-8 relative group ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+                 
                 >
                   <div className="w-[80%] flex flex-col items-center md:flex-row md:items-start">
                     <img
