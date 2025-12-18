@@ -87,7 +87,7 @@ const Hero = () => {
   const skillsCategories = [
     {
       title: "Languages",
-      skills: ["JavaScript", "TypeScript", "SQL", "PHP", "HTML5", "CSS3"],
+      skills: ["JavaScript", "TypeScript", "SQL", "HTML5", "CSS3"],
       icon: layersSVG,
       accentColor: "#F46C38",
     },
@@ -114,7 +114,6 @@ const Hero = () => {
         "MySQL",
         "Supabase",
         "REST APIs",
-        "postgreSQL",
       ],
       icon: layersSVG,
       accentColor: "#00D2D3",
